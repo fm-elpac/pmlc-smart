@@ -1,0 +1,9 @@
+[Unit]
+Description=pmlc-smart fast disk status (device /dev/%i)
+Documentation=https://TODO
+
+[Timer]
+OnCalendar=minutely
+
+[Install]
+WantedBy=multi-user.target

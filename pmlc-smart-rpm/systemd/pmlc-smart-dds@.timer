@@ -1,0 +1,10 @@
+[Unit]
+Description=pmlc-smart detail disk status (device /dev/%i)
+Documentation=https://TODO
+
+[Timer]
+OnCalendar=hourly
+Persistent=true
+
+[Install]
+WantedBy=multi-user.target

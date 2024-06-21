@@ -1,0 +1,11 @@
+[Unit]
+Description=pmlc-smart quick disk selftest (device /dev/%i)
+Documentation=https://TODO
+
+[Timer]
+# check disk everyday (10:00 UTC+0800, CST)
+OnCalendar=02:00 UTC
+Persistent=true
+
+[Install]
+WantedBy=multi-user.target

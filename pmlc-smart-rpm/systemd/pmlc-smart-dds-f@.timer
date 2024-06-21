@@ -1,0 +1,11 @@
+[Unit]
+Description=pmlc-smart detail disk status (force) (device /dev/%i)
+Documentation=https://TODO
+
+[Timer]
+# 5min after 10:00 (UTC+0800, CST) (pmlc-smart-ts)
+OnCalendar=02:05 UTC
+Persistent=true
+
+[Install]
+WantedBy=multi-user.target

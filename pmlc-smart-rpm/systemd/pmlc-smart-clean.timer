@@ -1,0 +1,10 @@
+[Unit]
+Description=pmlc-smart clean old log file
+Documentation=https://TODO
+
+[Timer]
+# 17:00 (UTC+0800, CST)
+OnCalendar=09:00 UTC
+
+[Install]
+WantedBy=multi-user.target

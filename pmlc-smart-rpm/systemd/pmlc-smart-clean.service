@@ -1,0 +1,34 @@
+[Unit]
+Description=pmlc-smart clean old log file
+Documentation=https://TODO
+
+[Service]
+Type=oneshot
+ExecStart=pmlc-smart-clean.sh
+
+WorkingDirectory=/var/lib/pmlc-smart
+# auto create /var/lib/pmlc-smart
+StateDirectory=pmlc-smart
+
+# sandbox restrict this service
+CapabilityBoundingSet=
+PrivateDevices=yes
+
+ProcSubset=pid
+NoNewPrivileges=yes
+# can only modify file in /var/lib/pmlc-smart (system is read-only)
+ProtectSystem=strict
+ReadWritePaths=/var/lib/pmlc-smart
+
+ProtectHome=yes
+PrivateNetwork=yes
+PrivateIPC=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+RestrictNamespaces=yes
+LockPersonality=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+SystemCallFilter=@system-service

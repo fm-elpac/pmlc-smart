@@ -1,0 +1,13 @@
+[Unit]
+Description=pmlc-smart watch device /dev/%i
+Documentation=https://TODO
+
+Wants=pmlc-smart-fds@%i.timer
+Wants=pmlc-smart-dds@%i.timer
+Wants=pmlc-smart-dds-f@%i.timer
+Wants=pmlc-smart-ts@%i.timer
+Wants=pmlc-smart-tl@%i.timer
+Wants=pmlc-smart-clean.timer
+
+[Install]
+WantedBy=multi-user.target

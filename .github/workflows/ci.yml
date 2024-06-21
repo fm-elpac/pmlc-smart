@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_rpm:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    # build rpm (fedora toolbox rpm-build)
+    - run: sudo apt-get -y install podman-toolbox
+    # Fedora 40
+    - run: toolbox create -y -d fedora -r 40
+      env:
+        SHELL: /usr/bin/bash
+    - run: |
+        toolbox run -c fedora-toolbox-40 \
+        sudo dnf install -y rpm-build rpm-devel rpmdevtools
+      env:
+        SHELL: /usr/bin/bash
+    - run: |
+        toolbox run -c fedora-toolbox-40 \
+        rpmdev-setuptree
+      env:
+        SHELL: /usr/bin/bash
+    # copy files
+    - run: |
+        cp pmlc-smart-rpm/pmlc-smart.spec ~/rpmbuild/SPECS/ && \
+        cp -r pmlc-smart-rpm/bin ~/rpmbuild/SOURCES/ && \
+        cp -r pmlc-smart-rpm/systemd ~/rpmbuild/SOURCES/
+    # build rpm
+    - run: |
+        toolbox run -c fedora-toolbox-40 \
+        rpmbuild -bb ~/rpmbuild/SPECS/pmlc-smart.spec
+      env:
+        SHELL: /usr/bin/bash
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: pmlc-smart-0.1.0a1-1.fc40.x86_64.rpm
+        path: ~/rpmbuild/RPMS/x86_64/pmlc-smart-0.1.0a1-1.fc40.x86_64.rpm
+
+  # TODO

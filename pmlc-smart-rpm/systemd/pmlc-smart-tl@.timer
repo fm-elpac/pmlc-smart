@@ -1,0 +1,13 @@
+[Unit]
+Description=pmlc-smart full disk selftest (device /dev/%i)
+Documentation=https://TODO
+
+[Timer]
+# 周四 15:00 (UTC+0800, CST)
+OnCalendar=Thu 05:00 UTC
+# this task take a few hours to run, so add a delay
+RandomizedDelaySec=2h
+Persistent=true
+
+[Install]
+WantedBy=multi-user.target

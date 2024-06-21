@@ -1,0 +1,35 @@
+[Unit]
+Description=pmlc-smart detail disk status (device /dev/%i)
+Documentation=https://TODO
+
+[Service]
+Type=oneshot
+ExecStart=pmlc-smart-dds.sh %i
+
+WorkingDirectory=/var/lib/pmlc-smart
+# auto create /var/lib/pmlc-smart
+StateDirectory=pmlc-smart
+
+# sandbox restrict this service
+CapabilityBoundingSet=CAP_SYS_RAWIO
+# allow /dev/%i
+DeviceAllow=/dev/%i
+
+ProcSubset=pid
+NoNewPrivileges=yes
+# can only modify file in /var/lib/pmlc-smart (system is read-only)
+ProtectSystem=strict
+ReadWritePaths=/var/lib/pmlc-smart
+
+ProtectHome=yes
+PrivateNetwork=yes
+PrivateIPC=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+RestrictNamespaces=yes
+LockPersonality=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+SystemCallFilter=@system-service
