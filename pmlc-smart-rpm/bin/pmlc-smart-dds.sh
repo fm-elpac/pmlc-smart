@@ -6,7 +6,7 @@ T=$(date +%s)
 # data dir to write log file
 DATA_DIR=$(pmlc-smart-fp.sh $T td)/$1
 
-SC_OPT="-n standby"
+SC_OPT="-n standby,0"
 # force check
 if [ "xf" = "x$2" ]; then
   SC_OPT=

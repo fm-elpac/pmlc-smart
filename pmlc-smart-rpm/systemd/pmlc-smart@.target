@@ -1,8 +1,8 @@
 [Unit]
 Description=pmlc-smart watch device /dev/%i
-Documentation=https://TODO
+Documentation=https://github.com/fm-elpac/pmlc-smart
 
-Wants=pmlc-smart-fds@%i.timer
+#Wants=pmlc-smart-fds@%i.timer
 Wants=pmlc-smart-dds@%i.timer
 Wants=pmlc-smart-dds-f@%i.timer
 Wants=pmlc-smart-ts@%i.timer

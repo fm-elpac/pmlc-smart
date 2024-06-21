@@ -1,6 +1,6 @@
 [Unit]
 Description=pmlc-smart full disk selftest (device /dev/%i)
-Documentation=https://TODO
+Documentation=https://github.com/fm-elpac/pmlc-smart
 
 [Service]
 Type=oneshot

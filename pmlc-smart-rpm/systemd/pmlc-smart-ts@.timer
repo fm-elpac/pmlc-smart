@@ -1,6 +1,6 @@
 [Unit]
 Description=pmlc-smart quick disk selftest (device /dev/%i)
-Documentation=https://TODO
+Documentation=https://github.com/fm-elpac/pmlc-smart
 
 [Timer]
 # check disk everyday (10:00 UTC+0800, CST)
