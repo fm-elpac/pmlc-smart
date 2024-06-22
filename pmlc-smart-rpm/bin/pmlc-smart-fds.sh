@@ -16,3 +16,6 @@ smartctl -n standby,0 -a /dev/$1 > $DATA_DIR/smartctl_a.log
 
 smartctl -n standby,0 -jl devstat /dev/$1 > $DATA_DIR/smartctl_devstat.json
 smartctl -n standby,0 -l devstat /dev/$1 > $DATA_DIR/smartctl_devstat.log
+
+# exit 0
+echo ok

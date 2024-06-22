@@ -41,7 +41,29 @@ jobs:
 
     - uses: actions/upload-artifact@v4
       with:
-        name: pmlc-smart-0.1.0a1-1.fc40.x86_64.rpm
-        path: ~/rpmbuild/RPMS/x86_64/pmlc-smart-0.1.0a1-1.fc40.x86_64.rpm
+        name: pmlc-smart-0.1.0a2-1.fc40.x86_64.rpm
+        path: ~/rpmbuild/RPMS/x86_64/pmlc-smart-0.1.0a2-1.fc40.x86_64.rpm
 
-  # TODO
+  build-docker:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: denoland/setup-deno@v1
+      with:
+        deno-version: v1.x
+
+    - run: deno fmt --check
+
+    # TODO
+    # build deno/fresh
+    #- run: cd pmlc-smart-deno && deno task check
+    #- run: cd pmlc-smart-deno && deno task build
+
+    # docker image
+    - run: cd pmlc-smart-deno && docker build --build-arg GIT_REVISION=$(git rev-parse HEAD) -t pmlc-smart .
+
+    - run: docker save pmlc-smart:latest | zstd > pmlc-smart.tar.zst
+    - uses: actions/upload-artifact@v4
+      with:
+        name: pmlc-smart
+        path: pmlc-smart.tar.zst

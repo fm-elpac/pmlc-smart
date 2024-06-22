@@ -1,5 +1,5 @@
 Name:       pmlc-smart
-Version:    0.1.0a1
+Version:    0.1.0a2
 Release:    1%{?dist}
 Summary:    Monitor harddisk health (S.M.A.R.T.)
 License:    GPL-3.0-or-later

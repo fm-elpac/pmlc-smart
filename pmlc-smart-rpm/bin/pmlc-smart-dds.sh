@@ -19,3 +19,6 @@ mkdir -p $DATA_DIR
 
 smartctl $SC_OPT -jx /dev/$1 > $DATA_DIR/smartctl_x.json
 smartctl $SC_OPT -x /dev/$1 > $DATA_DIR/smartctl_x.log
+
+# exit 0
+echo ok

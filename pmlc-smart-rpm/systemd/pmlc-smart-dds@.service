@@ -11,6 +11,7 @@ WorkingDirectory=/var/lib/pmlc-smart
 StateDirectory=pmlc-smart
 
 # sandbox restrict this service
+# CAP_SYS_ADMIN for NVMe device
 CapabilityBoundingSet=CAP_SYS_RAWIO
 # allow /dev/%i
 DeviceAllow=/dev/%i
